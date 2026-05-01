@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Feestfoto 1</title>
+  <desc id="desc">Een kleurrijke placeholder-afbeelding voor de verjaardagsmodus.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff2b8" />
+      <stop offset="100%" stop-color="#ff9f68" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)" />
+  <circle cx="122" cy="144" r="34" fill="#ef476f" />
+  <circle cx="205" cy="110" r="26" fill="#118ab2" />
+  <circle cx="612" cy="124" r="34" fill="#06d6a0" />
+  <circle cx="686" cy="164" r="24" fill="#ffd166" />
+  <circle cx="400" cy="355" r="150" fill="#f7c7a2" />
+  <path d="M260 295c8-130 260-145 294 0 15 61-8 164-8 164H255s-10-97 5-164Z" fill="#7c4a2e" />
+  <rect x="250" y="480" width="300" height="320" rx="42" fill="#ef476f" />
+  <circle cx="345" cy="352" r="15" fill="#2f2f3b" />
+  <circle cx="455" cy="352" r="15" fill="#2f2f3b" />
+  <path d="M345 424c31 34 84 34 115 0" fill="none" stroke="#9b4d4d" stroke-linecap="round" stroke-width="13" />
+  <path d="M310 508h180v58H310z" fill="#fff2b8" />
+  <text x="400" y="548" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#7a2240">
+    HOERA
+  </text>
+</svg>

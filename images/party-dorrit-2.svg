@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Feestfoto 2</title>
+  <desc id="desc">Een tweede kleurrijke placeholder-afbeelding voor de verjaardagsmodus.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#d8f3ff" />
+      <stop offset="100%" stop-color="#7cc8ff" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)" />
+  <path d="M70 155c180 70 480 70 660 0" fill="none" stroke="#ef476f" stroke-width="12" stroke-linecap="round" />
+  <path d="M110 205c160 55 420 55 580 0" fill="none" stroke="#ffd166" stroke-width="12" stroke-linecap="round" />
+  <circle cx="400" cy="355" r="150" fill="#f7c7a2" />
+  <path d="M255 300c34-122 249-142 290-18 28 84 5 178 5 178H255s-24-92 0-160Z" fill="#4b3558" />
+  <rect x="250" y="480" width="300" height="320" rx="42" fill="#06d6a0" />
+  <circle cx="345" cy="352" r="15" fill="#2f2f3b" />
+  <circle cx="455" cy="352" r="15" fill="#2f2f3b" />
+  <path d="M346 420c31 25 79 25 110 0" fill="none" stroke="#8f4b4b" stroke-linecap="round" stroke-width="13" />
+  <path d="M400 230l34 69 76 11-55 53 13 75-68-36-68 36 13-75-55-53 76-11z" fill="#ffd166" />
+</svg>

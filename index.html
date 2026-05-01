@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is Dorrit Jarig?</title>
+  <meta
+    name="description"
+    content="De enige echt belangrijke vraag van vandaag: is Dorrit jarig?"
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Outfit:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <main class="page-shell">
+    <div class="test-toggle" aria-label="Testweergave">
+      <button type="button" class="test-toggle__button is-active" data-test-mode="auto">Auto</button>
+      <button type="button" class="test-toggle__button" data-test-mode="ja">JA</button>
+      <button type="button" class="test-toggle__button" data-test-mode="nee">NEE</button>
+    </div>
+
+    <section class="hero" data-mode="loading">
+      <div class="hero__decor hero__decor--left" aria-hidden="true"></div>
+      <div class="hero__decor hero__decor--right" aria-hidden="true"></div>
+
+      <h1 id="answer" class="answer">NEE</h1>
+      <p id="subtitle" class="subtitle">
+        Vandaag nog niet. JavaScript mag straks altijd nog feestelijk ongelijk krijgen.
+      </p>
+
+      <div class="frame-stack">
+        <div class="photo-card photo-card--back" aria-hidden="true"></div>
+        <div class="photo-card photo-card--front">
+          <img
+            id="photo-base"
+            src="images/nee-1.jpg"
+            alt="Een foto van Dorrit"
+          >
+          <img
+            id="photo-overlay"
+            class="photo-overlay"
+            src="images/nee-1.jpg"
+            alt=""
+            aria-hidden="true"
+          >
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <noscript>
+    <div class="noscript-note">
+      JavaScript staat uit. Dan houden we het veilig bij: nee, vandaag geen automatische
+      verjaardagsdetectie.
+    </div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

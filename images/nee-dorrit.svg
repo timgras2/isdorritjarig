@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Niet-verjaardagsfoto</title>
+  <desc id="desc">Een speelse placeholder-afbeelding voor dagen waarop Dorrit niet jarig is.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8efe2" />
+      <stop offset="100%" stop-color="#e9dcc4" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)" />
+  <circle cx="400" cy="355" r="150" fill="#f8c7a1" />
+  <path d="M250 290c20-120 270-130 305 10 20 83-10 160-10 160H255s-20-80-5-170Z" fill="#805839" />
+  <rect x="265" y="485" width="270" height="290" rx="40" fill="#fdf8f1" />
+  <circle cx="345" cy="350" r="15" fill="#2f2f3b" />
+  <circle cx="455" cy="350" r="15" fill="#2f2f3b" />
+  <path d="M347 423c34 20 75 20 107 0" fill="none" stroke="#9b4d4d" stroke-linecap="round" stroke-width="13" />
+  <path d="M325 335c20-22 49-28 70-18" fill="none" stroke="#69452d" stroke-linecap="round" stroke-width="9" />
+  <path d="M410 317c26-17 51-14 69 7" fill="none" stroke="#69452d" stroke-linecap="round" stroke-width="9" />
+  <text x="400" y="875" text-anchor="middle" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#102c57">
+    Nog even geduld...
+  </text>
+</svg>
