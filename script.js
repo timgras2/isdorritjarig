@@ -18,8 +18,6 @@ const photoOverlay = document.querySelector("#photo-overlay");
 const hero = document.querySelector(".hero");
 const canvas = document.querySelector("#confetti-canvas");
 const favicon = document.querySelector("#dynamic-favicon");
-const testToggle = document.querySelector(".test-toggle");
-const toggleButtons = document.querySelectorAll("[data-test-mode]");
 
 const today = new Date();
 const isBirthday =
@@ -30,12 +28,11 @@ let slideshowTimer = null;
 let confettiFrame = null;
 let confettiCleanup = null;
 let photoTransitionToken = 0;
+let forcedMode = null;
 
 initializeSite();
 
 async function initializeSite() {
-  setupTestModeUi();
-
   const [partyPhotos, nopePhotos] = await Promise.all([
     discoverImages("ja"),
     discoverImages("nee"),
@@ -44,13 +41,20 @@ async function initializeSite() {
   const nopePhoto = nopePhotos[0] || "images/nee-1.jpg";
   const selectedMode = getSelectedMode();
 
-  bindTestToggle(() => applyMode({ partyPhotos, nopePhoto }));
   applyMode({ partyPhotos, nopePhoto, selectedMode });
+
+  window.setDorritMode = (mode = "auto") => {
+    if (!["auto", "ja", "nee"].includes(mode)) {
+      return;
+    }
+
+    forcedMode = mode === "auto" ? null : mode;
+    applyMode({ partyPhotos, nopePhoto, selectedMode: getSelectedMode() });
+  };
 }
 
 function applyMode({ partyPhotos, nopePhoto, selectedMode = getSelectedMode() }) {
   stopEffects();
-  updateToggleState(selectedMode);
 
   const showParty = selectedMode === "ja" || (selectedMode === "auto" && isBirthday);
 
@@ -305,8 +309,8 @@ function stopEffects() {
 }
 
 function getSelectedMode() {
-  if (!isLocalEnvironment()) {
-    return "auto";
+  if (forcedMode === "ja" || forcedMode === "nee") {
+    return forcedMode;
   }
 
   const params = new URLSearchParams(window.location.search);
@@ -324,50 +328,10 @@ function getSelectedMode() {
   return "auto";
 }
 
-function bindTestToggle(onChange) {
-  if (!testToggle) {
-    return;
-  }
-
-  toggleButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const nextMode = button.dataset.testMode;
-      window.localStorage.setItem("dorrit-test-mode", nextMode);
-      onChange();
-    });
-  });
-}
-
-function updateToggleState(selectedMode) {
-  toggleButtons.forEach((button) => {
-    const isActive = button.dataset.testMode === selectedMode;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-}
-
 function setFavicon(href) {
   if (!favicon) {
     return;
   }
 
   favicon.href = href;
-}
-
-function setupTestModeUi() {
-  if (!testToggle) {
-    return;
-  }
-
-  testToggle.hidden = !isLocalEnvironment();
-}
-
-function isLocalEnvironment() {
-  const { hostname, protocol } = window.location;
-  return (
-    hostname === "localhost" ||
-    hostname === "127.0.0.1" ||
-    hostname === "" ||
-    protocol === "file:"
-  );
 }

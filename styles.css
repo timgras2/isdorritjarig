@@ -75,46 +75,6 @@ body::after {
   padding: 32px 16px;
 }
 
-.test-toggle {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 7;
-  display: inline-flex;
-  gap: 6px;
-  padding: 6px;
-  border-radius: 999px;
-  background: rgba(255, 250, 242, 0.85);
-  border: 1px solid rgba(17, 44, 87, 0.1);
-  box-shadow: 0 12px 26px rgba(29, 36, 64, 0.12);
-  backdrop-filter: blur(10px);
-}
-
-.test-toggle__button {
-  border: 0;
-  border-radius: 999px;
-  padding: 10px 14px;
-  background: transparent;
-  color: var(--ink);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.test-toggle__button:hover {
-  background: rgba(17, 44, 87, 0.08);
-}
-
-.test-toggle__button.is-active {
-  background: #102c57;
-  color: #fff9ef;
-}
-
-.test-toggle__button:active {
-  transform: translateY(1px);
-}
-
 .hero {
   position: relative;
   width: min(100%, 940px);
@@ -485,13 +445,6 @@ body::after {
 }
 
 @media (max-width: 640px) {
-  .test-toggle {
-    top: 12px;
-    right: 12px;
-    left: 12px;
-    justify-content: center;
-  }
-
   .hero {
     border-radius: 28px;
     padding: 28px 16px 22px;
