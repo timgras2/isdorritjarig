@@ -17,6 +17,8 @@ const photo = document.querySelector("#photo-base");
 const photoOverlay = document.querySelector("#photo-overlay");
 const hero = document.querySelector(".hero");
 const canvas = document.querySelector("#confetti-canvas");
+const favicon = document.querySelector("#dynamic-favicon");
+const testToggle = document.querySelector(".test-toggle");
 const toggleButtons = document.querySelectorAll("[data-test-mode]");
 
 const today = new Date();
@@ -32,6 +34,8 @@ let photoTransitionToken = 0;
 initializeSite();
 
 async function initializeSite() {
+  setupTestModeUi();
+
   const [partyPhotos, nopePhotos] = await Promise.all([
     discoverImages("ja"),
     discoverImages("nee"),
@@ -63,6 +67,7 @@ function enablePartyMode(partyPhotos, fallbackNopePhoto) {
   answer.textContent = "JA";
   subtitle.textContent =
     "Het is 2 mei, de belangrijkste dag van het jaar! Trek de slingers scheef, ga in de lampen hangen en laat Dorrit schitteren.";
+  setFavicon("images/favicon-ja.svg");
   transitionPhoto(partyPhotos[0] || fallbackNopePhoto, "Feestelijke Dorrit-foto");
   startSlideshow(partyPhotos);
   startConfetti();
@@ -73,6 +78,7 @@ function enableNopeMode(nopePhoto) {
   answer.textContent = "NEE";
   subtitle.textContent =
     "Vandaag nog niet. Blijf gerust hier wachten tot het zover is.";
+  setFavicon("images/favicon-nee.svg");
   transitionPhoto(nopePhoto, "Dorrit wacht nog even op haar verjaardag");
 }
 
@@ -299,6 +305,10 @@ function stopEffects() {
 }
 
 function getSelectedMode() {
+  if (!isLocalEnvironment()) {
+    return "auto";
+  }
+
   const params = new URLSearchParams(window.location.search);
   const queryMode = params.get("test");
 
@@ -315,6 +325,10 @@ function getSelectedMode() {
 }
 
 function bindTestToggle(onChange) {
+  if (!testToggle) {
+    return;
+  }
+
   toggleButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const nextMode = button.dataset.testMode;
@@ -330,4 +344,30 @@ function updateToggleState(selectedMode) {
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
+}
+
+function setFavicon(href) {
+  if (!favicon) {
+    return;
+  }
+
+  favicon.href = href;
+}
+
+function setupTestModeUi() {
+  if (!testToggle) {
+    return;
+  }
+
+  testToggle.hidden = !isLocalEnvironment();
+}
+
+function isLocalEnvironment() {
+  const { hostname, protocol } = window.location;
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "" ||
+    protocol === "file:"
+  );
 }
