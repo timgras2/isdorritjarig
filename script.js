@@ -20,10 +20,10 @@ const modeLoader = document.querySelector(".mode-loader");
 const canvas = document.querySelector("#confetti-canvas");
 const favicon = document.querySelector("#dynamic-favicon");
 
-const today = new Date();
+const amsterdamDate = getAmsterdamDateParts();
 const isBirthday =
-  today.getMonth() === SITE_CONFIG.birthday.month &&
-  today.getDate() === SITE_CONFIG.birthday.day;
+  amsterdamDate.month === SITE_CONFIG.birthday.month &&
+  amsterdamDate.day === SITE_CONFIG.birthday.day;
 
 let slideshowTimer = null;
 let confettiFrame = null;
@@ -329,11 +329,6 @@ function getSelectedMode() {
     return queryMode;
   }
 
-  const storedMode = window.localStorage.getItem("dorrit-test-mode");
-  if (storedMode === "ja" || storedMode === "nee" || storedMode === "auto") {
-    return storedMode;
-  }
-
   return "auto";
 }
 
@@ -343,4 +338,18 @@ function setFavicon(href) {
   }
 
   favicon.href = href;
+}
+
+function getAmsterdamDateParts() {
+  const formatter = new Intl.DateTimeFormat("nl-NL", {
+    timeZone: "Europe/Amsterdam",
+    month: "numeric",
+    day: "numeric",
+  });
+
+  const parts = formatter.formatToParts(new Date());
+  const month = Number(parts.find((part) => part.type === "month")?.value);
+  const day = Number(parts.find((part) => part.type === "day")?.value);
+
+  return { month: month - 1, day };
 }

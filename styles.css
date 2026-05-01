@@ -76,7 +76,7 @@ body::after {
 }
 
 .mode-loader {
-  position: absolute;
+  position: fixed;
   top: 88px;
   left: 50%;
   z-index: 2;
@@ -86,9 +86,11 @@ body::after {
   justify-items: center;
   text-align: center;
   transition: opacity 220ms ease, transform 220ms ease;
+  width: min(100vw - 32px, 220px);
 }
 
 .mode-loader[hidden] {
+  display: none !important;
   opacity: 0;
   transform: translate(-50%, 8px);
   pointer-events: none;
@@ -564,7 +566,8 @@ body::after {
 
 @media (max-width: 640px) {
   .mode-loader {
-    top: 74px;
+    top: max(24px, env(safe-area-inset-top, 0px) + 12px);
+    width: min(100vw - 24px, 200px);
   }
 
   .hero {
