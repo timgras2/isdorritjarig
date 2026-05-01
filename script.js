@@ -16,6 +16,7 @@ const subtitle = document.querySelector("#subtitle");
 const photo = document.querySelector("#photo-base");
 const photoOverlay = document.querySelector("#photo-overlay");
 const hero = document.querySelector(".hero");
+const modeLoader = document.querySelector(".mode-loader");
 const canvas = document.querySelector("#confetti-canvas");
 const favicon = document.querySelector("#dynamic-favicon");
 
@@ -68,6 +69,10 @@ function applyMode({ partyPhotos, nopePhoto, selectedMode = getSelectedMode() })
 
 function enablePartyMode(partyPhotos, fallbackNopePhoto) {
   hero.dataset.mode = "party";
+  hero.dataset.ready = "true";
+  if (modeLoader) {
+    modeLoader.hidden = true;
+  }
   answer.textContent = "JA";
   subtitle.textContent =
     "Het is 2 mei, de belangrijkste dag van het jaar! Trek de slingers scheef, ga in de lampen hangen en laat Dorrit schitteren.";
@@ -79,6 +84,10 @@ function enablePartyMode(partyPhotos, fallbackNopePhoto) {
 
 function enableNopeMode(nopePhoto) {
   hero.dataset.mode = "nope";
+  hero.dataset.ready = "true";
+  if (modeLoader) {
+    modeLoader.hidden = true;
+  }
   answer.textContent = "NEE";
   subtitle.textContent =
     "Vandaag nog niet. Blijf gerust hier wachten tot het zover is.";
